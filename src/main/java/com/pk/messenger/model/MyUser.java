@@ -17,7 +17,7 @@ public class MyUser {
     private String username;
 
     MyUser(){}
-    MyUser(UserRole role, String username){
+    public MyUser(UserRole role, String username){
         this.role = role;
         this.username = username;
     }

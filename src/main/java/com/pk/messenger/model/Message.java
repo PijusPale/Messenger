@@ -1,5 +1,6 @@
 package com.pk.messenger.model;
 
+import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -7,6 +8,7 @@ import jakarta.persistence.Id;
 import java.util.Date;
 import java.util.Objects;
 
+@Entity
 public class Message {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
@@ -15,7 +17,7 @@ public class Message {
     private Date date;
     private Long userId;
     Message(){}
-    Message(String text, Date date, Long userId){
+    public Message(String text, Date date, Long userId){
         this.text = text;
         this.date = date;
         this.userId = userId;
