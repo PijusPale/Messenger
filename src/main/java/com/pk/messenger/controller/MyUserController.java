@@ -15,10 +15,7 @@ public class MyUserController {
     MyUserController(MyUserService myUserService) {
         this.myUserService = myUserService;
     }
-//    @GetMapping("/myUsers")
-//    List<MyUser> all() {
-//        return myUserRepository.findAll();
-//    }
+
     @PostMapping("/myUsers")
     MyUser newMyUser(@RequestBody MyUserRequestDTO newMyUser) {
         return myUserService.createMyUser(newMyUser);
@@ -28,21 +25,6 @@ public class MyUserController {
 
         return myUserService.getMyUserById(id);
     }
-
-//    @PutMapping("/myUsers/{id}")
-//    MyUser replaceMyUser(@RequestBody MyUser newMyUser, @PathVariable Long id) {
-//
-//        return myUserRepository.findById(id)
-//                .map(myUser -> {
-//                    myUser.setUsername(newMyUser.getUsername());
-//                    myUser.setRole(newMyUser.getRole());
-//                    return myUserRepository.save(myUser);
-//                })
-//                .orElseGet(() -> {
-//                    newMyUser.setId(id);
-//                    return myUserRepository.save(newMyUser);
-//                });
-//    }
 
     @DeleteMapping("/myUsers/{id}")
     void deleteMyUser(@PathVariable Long id) {

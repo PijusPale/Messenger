@@ -27,31 +27,9 @@ public class MessageController {
     Message newMessage(@RequestBody MessageRequestDTO newMessage) {
         return messageService.createMessage(newMessage);
     }
-//    @GetMapping("/messages/{id}")
-//    Message one(@PathVariable Long id) {
-//
-//        return messageService.findById(id)
-//                .orElseThrow(() -> new MessageNotFoundException(id));
-//    }
 
     @PutMapping("/messages/{id}")
-    Message replaceMessage(@RequestBody MessageRequestDTO newMessage, @PathVariable Long id) {
+    Message updateMessage(@RequestBody MessageRequestDTO newMessage, @PathVariable Long id) {
         return messageService.updateMessage(id, newMessage);
-//        return messageRepository.findById(id)
-//                .map(message -> {
-//                    message.setText(newMessage.getText());
-//                    message.setDate(newMessage.getDate());
-//                    message.setUserId(newMessage.getUserId());
-//                    return messageRepository.save(message);
-//                })
-//                .orElseGet(() -> {
-//                    newMessage.setId(id);
-//                    return messageRepository.save(newMessage);
-//                });
     }
-
-//    @DeleteMapping("/messages/{id}")
-//    void deleteMessage(@PathVariable Long id) {
-//        messageRepository.deleteById(id);
-//    }
 }
