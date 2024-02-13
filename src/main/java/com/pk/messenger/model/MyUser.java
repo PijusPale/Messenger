@@ -9,15 +9,15 @@ import jakarta.persistence.Id;
 import java.util.Objects;
 
 @Entity
-public class User {
+public class MyUser {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private UserRole role;
     private String username;
 
-    User(){}
-    User(UserRole role, String username){
+    MyUser(){}
+    MyUser(UserRole role, String username){
         this.role = role;
         this.username = username;
     }
@@ -50,8 +50,8 @@ public class User {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        User user = (User) o;
-        return Objects.equals(getId(), user.getId()) && getRole() == user.getRole() && Objects.equals(getUsername(), user.getUsername());
+        MyUser myUser = (MyUser) o;
+        return Objects.equals(getId(), myUser.getId()) && getRole() == myUser.getRole() && Objects.equals(getUsername(), myUser.getUsername());
     }
 
     @Override
