@@ -16,11 +16,11 @@ public class MessageController {
         this.messageService = messageService;
     }
     @GetMapping("/messages")
-    List<Message> all() {
+    List<Message> getAll() {
         return messageService.getMessages();
     }
     @GetMapping("/messagesSorted")
-    List<Message> allSorted() {
+    List<Message> getAllSorted() {
         return messageService.getMessagesSorted();
     }
     @PostMapping("/messages")
