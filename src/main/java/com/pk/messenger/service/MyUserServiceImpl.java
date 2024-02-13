@@ -2,6 +2,7 @@ package com.pk.messenger.service;
 
 import com.pk.messenger.dto.MessageRequestDTO;
 import com.pk.messenger.dto.MyUserRequestDTO;
+import com.pk.messenger.exception.MyUserNotFoundException;
 import com.pk.messenger.model.Message;
 import com.pk.messenger.model.MyUser;
 import com.pk.messenger.model.MyUserStats;
@@ -38,7 +39,7 @@ public class MyUserServiceImpl implements MyUserService {
     @Override
     public MyUser getMyUserById(Long id) {
         return myUserRepository.findById(id).orElseThrow(
-                () -> new ResponseStatusException(HttpStatus.NOT_FOUND, String.format("User with id %d not found", id))
+                () -> new MyUserNotFoundException(id)
         );
     }
 
@@ -61,7 +62,7 @@ public class MyUserServiceImpl implements MyUserService {
     public MyUserStats getMyUserStats(Long id) {
 
         MyUser myUser = myUserRepository.findById(id).orElseThrow(
-                () -> new ResponseStatusException(HttpStatus.NOT_FOUND, String.format("User with id %d not found", id))
+                () -> new MyUserNotFoundException(id)
         );
         Set<Message> messages = myUser.getMessages();
         if (messages.isEmpty()) {

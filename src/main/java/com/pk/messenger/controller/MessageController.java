@@ -1,9 +1,7 @@
 package com.pk.messenger.controller;
 
 import com.pk.messenger.dto.MessageRequestDTO;
-import com.pk.messenger.exception.MessageNotFoundException;
 import com.pk.messenger.model.Message;
-import com.pk.messenger.repository.MessageRepository;
 import com.pk.messenger.service.MessageService;
 import org.springframework.web.bind.annotation.*;
 

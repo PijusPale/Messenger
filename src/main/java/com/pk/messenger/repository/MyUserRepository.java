@@ -1,6 +1,5 @@
 package com.pk.messenger.repository;
 
-import com.pk.messenger.model.Message;
 import com.pk.messenger.model.MyUser;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
