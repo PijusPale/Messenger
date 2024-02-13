@@ -1,10 +1,7 @@
 package com.pk.messenger.model;
 
 import com.pk.messenger.enums.UserRole;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import java.util.Objects;
 
@@ -13,12 +10,12 @@ public class MyUser {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private UserRole role;
+    private UserRole userRole;
     private String username;
 
     MyUser(){}
     public MyUser(UserRole role, String username){
-        this.role = role;
+        this.userRole = role;
         this.username = username;
     }
 
@@ -27,7 +24,7 @@ public class MyUser {
     }
 
     public UserRole getRole() {
-        return role;
+        return userRole;
     }
 
     public String getUsername() {
@@ -39,7 +36,7 @@ public class MyUser {
     }
 
     public void setRole(UserRole role) {
-        this.role = role;
+        this.userRole = role;
     }
 
     public void setUsername(String username) {
@@ -63,7 +60,7 @@ public class MyUser {
     public String toString() {
         return "User{" +
                 "id=" + id +
-                ", role=" + role +
+                ", role=" + userRole +
                 ", username='" + username + '\'' +
                 '}';
     }

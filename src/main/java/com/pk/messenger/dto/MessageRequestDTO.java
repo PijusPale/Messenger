@@ -6,6 +6,11 @@ public class MessageRequestDTO {
     private String text;
     private Date date;
     private Long userId;
+    public MessageRequestDTO(String text, Date date, Long userId){
+        this.text = text;
+        this.date = date;
+        this.userId = userId;
+    }
 
     public String getText() {
         return text;
