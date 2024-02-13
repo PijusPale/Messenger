@@ -30,7 +30,11 @@ public class MessageServiceImpl implements MessageService {
 
     @Override
     public Message createMessage(MessageRequestDTO messageRequest) {
-        return messageRepository.save(new Message(messageRequest.getText(), messageRequest.getDate(), messageRequest.getUserId()));
+        return messageRepository.save(
+                new Message(
+                        messageRequest.getText(),
+                        messageRequest.getDate(),
+                        messageRequest.getUserId()));
     }
 
     @Override
@@ -46,7 +50,6 @@ public class MessageServiceImpl implements MessageService {
                         () -> new ResponseStatusException(HttpStatus.NOT_FOUND, String.format("Message with id %d not found", id))
                 );
     }
-
     public List<Message> getAllByUserId(Long userId){
         return messageRepository.findAllByUserId(userId);
     }

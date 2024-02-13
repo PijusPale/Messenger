@@ -2,9 +2,7 @@ package com.pk.messenger.service;
 
 import com.pk.messenger.dto.MessageRequestDTO;
 import com.pk.messenger.dto.MyUserRequestDTO;
-import com.pk.messenger.model.Message;
 import com.pk.messenger.model.MyUser;
-import com.pk.messenger.repository.MessageRepository;
 import com.pk.messenger.repository.MyUserRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -40,7 +38,15 @@ public class MyUserServiceImpl implements MyUserService{
     @Override
     public void deleteMyUserById(Long id) {
 
-        messageService.getAllByUserId(id).forEach(message -> {
+//        messageService.getAllByUserId(id).forEach(message -> {
+//            MessageRequestDTO updatedMessage =
+//                    new MessageRequestDTO(
+//                            message.getText(),
+//                            message.getDate(),
+//                            myUserRepository.findByUsername("anonymous").getId());
+//            messageService.updateMessage(message.getId(), updatedMessage);
+//        });
+        getMyUserById(id).getMessages().forEach(message -> {
             MessageRequestDTO updatedMessage =
                     new MessageRequestDTO(
                             message.getText(),

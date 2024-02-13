@@ -1,5 +1,7 @@
 package com.pk.messenger.dto;
 
+import com.pk.messenger.model.MyUser;
+
 import java.util.Date;
 
 public class MessageRequestDTO {

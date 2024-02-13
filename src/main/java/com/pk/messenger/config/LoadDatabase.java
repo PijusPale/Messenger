@@ -5,7 +5,9 @@ import com.pk.messenger.model.Message;
 import com.pk.messenger.model.MyUser;
 import com.pk.messenger.repository.MessageRepository;
 import com.pk.messenger.repository.MyUserRepository;
+
 import java.util.Date;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
@@ -17,6 +19,7 @@ import org.springframework.context.annotation.Configuration;
 @EntityScan("com.pk.messenger.model")
 public class LoadDatabase {
     private static final Logger log = LoggerFactory.getLogger(LoadDatabase.class);
+
     @Bean
     CommandLineRunner initDatabase(MyUserRepository myUserRepository, MessageRepository messageRepository) {
         MyUser anonymous = myUserRepository.save(new MyUser(UserRole.PRIVATE, "anonymous"));

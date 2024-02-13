@@ -1,11 +1,16 @@
 package com.pk.messenger.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import jakarta.persistence.*;
 
 import java.util.Date;
 import java.util.Objects;
 
 @Entity
+@Table(name = "MESSAGE")
 public class Message {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
@@ -13,8 +18,9 @@ public class Message {
     private String text;
     private Date date;
     private Long userId;
-    Message(){}
-    public Message(String text, Date date, Long userId){
+
+    protected Message() {}
+    public Message(String text, Date date, Long userId) {
         this.text = text;
         this.date = date;
         this.userId = userId;
@@ -29,9 +35,11 @@ public class Message {
     public Date getDate() {
         return this.date;
     }
+
     public Long getUserId() {
-        return this.userId;
+        return userId;
     }
+
     public void setId(Long id) {
         Id = id;
     }
@@ -41,6 +49,7 @@ public class Message {
     public void setDate(Date date) {
         this.date = date;
     }
+
     public void setUserId(Long userId) {
         this.userId = userId;
     }
