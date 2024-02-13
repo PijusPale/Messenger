@@ -2,11 +2,12 @@ package com.pk.messenger.controller;
 
 import com.pk.messenger.dto.MyUserRequestDTO;
 import com.pk.messenger.enums.UserRole;
-import com.pk.messenger.exception.MyUserNotFoundException;
 import com.pk.messenger.model.MyUser;
-import com.pk.messenger.repository.MyUserRepository;
+import com.pk.messenger.model.MyUserStats;
 import com.pk.messenger.service.MyUserService;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -43,6 +44,15 @@ public class MyUserController {
             myUserService.deleteMyUserById(id);
         } else {
             throw(new ResponseStatusException(HttpStatus.FORBIDDEN, "Unauthorized"));
+        }
+    }
+    @GetMapping(value = "myUsers/statistics/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<?> getMyUserStats(@PathVariable Long id, @RequestParam UserRole userRole) {
+        if (userRole == UserRole.ADMIN) {
+            MyUserStats stats = myUserService.getMyUserStats(id);
+            return ResponseEntity.ok(stats);
+        } else {
+            throw new ResponseStatusException(HttpStatus.FORBIDDEN, "Unauthorized");
         }
     }
 }
