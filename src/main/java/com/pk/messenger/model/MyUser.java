@@ -58,6 +58,10 @@ public class MyUser {
         return messages;
     }
 
+    public void setMessages(Set<Message> messages) {
+        this.messages = messages;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
